@@ -1,10 +1,12 @@
+import React from 'react'
+import SidebarComponent from './sidebar/sidebar'
+import EditorComponent from './editor/editor'
 import './App.css';
-import React, { Component } from 'react'
 
 const firebase = require('firebase');
 
 
-class App extends Component {
+class App extends React.Component {
   constructor(){
     super();
     this.state = {
@@ -16,8 +18,9 @@ class App extends Component {
   
   render() {
     return (
-      <div>
-        Hello!!
+      <div className="app-container">
+        <SidebarComponent></SidebarComponent>
+        <EditorComponent></EditorComponent>
       </div>
     )
   }
