@@ -28,15 +28,15 @@ class EditorComponent extends React.Component {
     );
   }
 
-  updateBody = async (val) => {
-      await this.setState({ text : val });
-      this.update();
+  updateBody = async val => {
+    await this.setState({ text: val });
+    this.update();
   };
   update = debounce(() => {
-      console.log("UPDATING DB");
-      
-      // come back later
-  }, 1500)
+    console.log("UPDATING DB");
+
+    // come back later
+  }, 1500);
 }
 
 export default withStyles(styles)(EditorComponent);
