@@ -26,7 +26,7 @@ class SidebarComponent extends React.Component {
           onClick={this.newNoteBtnClick}
           className={classes.newNoteBtnClick}
         >
-          New Note
+          {this.state.addingNote ? 'Cancle' : 'New Note'}
         </Button>
         {this.state.addingNote ? (
           <div>
@@ -35,6 +35,8 @@ class SidebarComponent extends React.Component {
               placeholder="Enter note title"
               onKeyUp={e => this.updateTitle(e.target.value)}
             ></input>
+            <Button className={classes.newNoteSubmitBtn}
+            onClick={this.newNote}>Submit Note</Button>
           </div>
         ) : null}
       </div>
@@ -46,6 +48,10 @@ class SidebarComponent extends React.Component {
   updateTitle = txt => {
     console.log("Here it is: ", txt);
   };
+
+  newNote = () => {
+      console.log(this.state);
+  }
 }
 
 export default withStyles(styles)(SidebarComponent);
