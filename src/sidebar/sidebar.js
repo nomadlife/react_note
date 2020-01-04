@@ -46,7 +46,7 @@ class SidebarComponent extends React.Component {
                 return(
                   <div key={_index}>
                     <SidebarItemComponent 
-                    _note={_index}
+                    _note={_note}
                     _index={_index}
                     selectedNoteIndex={selectedNoteIndex}
                     selectNote={this.selectNote}
