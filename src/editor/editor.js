@@ -9,9 +9,9 @@ class EditorComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      text: "",
-      title: "",
-      id: ""
+      text: '',
+      title: '',
+      id: ''
     };
   }
 
@@ -50,10 +50,12 @@ class EditorComponent extends React.Component {
     await this.setState({ text: val });
     this.update();
   };
-  update = debounce(() => {
-    console.log("UPDATING DB");
 
-    // come back later
+  update = debounce(() => {
+    this.props.noteUpdate(this.state.id, {
+      title:this.state.title,
+      body:this.state.text
+    })
   }, 1500);
 }
 
