@@ -22,7 +22,13 @@ class App extends React.Component {
           selectedNoteIndex={this.state.selectedNoteIndex}
           notes={this.state.notes}
         ></SidebarComponent>
-        <EditorComponent></EditorComponent>
+        {
+          this.state.selectedNote ?
+          <EditorComponent selectedNote={this.state.selectedNote}
+        selectedNoteIndex={this.state.selectedNoteIndex}
+        notes={this.state.notes}></EditorComponent>
+        : null
+        }
       </div>
     );
   }
