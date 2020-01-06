@@ -16,15 +16,19 @@ class SidebarItemComponent extends React.Component {
             <div key={_index}>
                 <ListItem className={classes.listItem}
                 selected={selectedNoteIndex===_index}
-                alignItems='flex-start'>
-                    <div className={classes.textSection}
-                    onClick={()=>this.selectNote(_note,_index)}>
-                        <ListItemText primary={_note.title}
-                        secondary={removeHTMLTags(_note.body.substring(0,30)) + '...'}></ListItemText>
-
-                    </div>
-                    <DeleteIcon onClick={() => this.deleteNote(_note)}
-                    className={classes.deleteIcon}></DeleteIcon>
+                alignItems='flex-start'
+                onClick={()=>{this.selectNote(_note,_index)}}>
+                <div className={classes.textSection}>
+                    <ListItemText primary={_note.title}
+                    secondary={removeHTMLTags(_note.body.substring(0,30)) + '...'}></ListItemText>
+                </div>
+                <DeleteIcon onClick={(e) => {
+                    if(window.confirm(`Are you sure you want to delete: ${_note.title}`)) {
+                        this.props.deleteNote(_note);
+                    }else {
+                        e.stopPropagation();
+                    }}}
+                className={classes.deleteIcon}></DeleteIcon>
                 </ListItem>
             </div>
         )
@@ -34,6 +38,8 @@ class SidebarItemComponent extends React.Component {
     deleteNote = (note) => {
         if(window.confirm(`Are you sure you want to delete: ${note.title}`)) {
             this.props.deleteNote(note);
+        }else {
+
         }
     }
 }
