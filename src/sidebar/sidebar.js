@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { Divider, Button, ButtonGroup } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -34,13 +35,20 @@ class SidebarComponent extends React.Component {
               <input
                 className={classes.newNoteInput}
                 placeholder="Enter note title"
-                onKeyUp={e => this.updateTitle(e.target.value)}
+                autoFocus
+                onKeyUp={e => {
+                  if(e.key == "Enter"){
+                    this.newNote()
+                  }else{
+                    this.updateTitle(e.target.value)
+                  }
+                }}
               ></input>
               <Button className={classes.newNoteSubmitBtn}
               onClick={this.newNote}>Submit Note</Button>
             </div>
           ) : null}
-          <list>
+          <List>
             {
               notes.map((_note,_index) => {
                 return(
@@ -61,7 +69,7 @@ class SidebarComponent extends React.Component {
                 )
               })
             }
-          </list>
+          </List>
         </div>
       );
     } else {
