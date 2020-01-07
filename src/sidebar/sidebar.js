@@ -26,7 +26,7 @@ class SidebarComponent extends React.Component {
         <div className={classes.sidebarContainer}>
           <Button
             onClick={this.newNoteBtnClick}
-            className={classes.newNoteBtnClick}
+            className={classes.newNoteBtn}
           >
             {this.state.addingNote ? 'Cancle' : 'New Note'}
           </Button>
@@ -37,7 +37,7 @@ class SidebarComponent extends React.Component {
                 placeholder="Enter note title"
                 autoFocus
                 onKeyUp={e => {
-                  if(e.key == "Enter"){
+                  if(e.key === "Enter"){
                     this.newNote()
                   }else{
                     this.updateTitle(e.target.value)

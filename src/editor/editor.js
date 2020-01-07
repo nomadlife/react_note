@@ -45,7 +45,7 @@ class EditorComponent extends React.Component {
         value={this.state.title ? this.state.title : ''}
         onChange={(e) => this.updateTitle(e.target.value)}
         onKeyUp={(e)=>{
-          if(e.key == 'Enter'){
+          if(e.key === 'Enter'){
             this.handleFocus('quill_tab')
           }
         }}>
