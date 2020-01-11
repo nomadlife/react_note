@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactQuill from "react-quill";
 import debounce from "../helpers";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
-import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles";
+import "./editor.css";
 
-class EditorComponent extends React.Component {
+class EditorComponent extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,10 +36,10 @@ class EditorComponent extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.editorContainer}>
-        <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
+      <div className="editorContainer">
+        <BorderColorIcon className="editIcon"></BorderColorIcon>
         <input
-        className={classes.titleInput}
+        className="titleInput"
         placeholder='Note title...'
         value={this.state.title ? this.state.title : ''}
         onChange={(e) => this.updateTitle(e.target.value)}
@@ -81,4 +80,4 @@ class EditorComponent extends React.Component {
   }, 1500);
 }
 
-export default withStyles(styles)(EditorComponent);
+export default EditorComponent;

@@ -1,15 +1,10 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles";
+import React, { Component } from "react";
+import "./sidebar.css";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import { Divider, Button, ButtonGroup } from "@material-ui/core";
-import ListItemText from "@material-ui/core/ListItemText";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { removeHTMLTags } from "../helpers";
 import SidebarItemComponent from "../sidebaritem/sidebaritem";
 
-class SidebarComponent extends React.Component {
+class SidebarComponent extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,17 +18,17 @@ class SidebarComponent extends React.Component {
 
     if(notes) {
       return (
-        <div className={classes.sidebarContainer}>
+        <div className="sidebarContainer">
           <Button
             onClick={this.newNoteBtnClick}
-            className={classes.newNoteBtn}
+            className="newNoteBtn"
           >
             {this.state.addingNote ? 'Cancle' : 'New Note'}
           </Button>
           {this.state.addingNote ? (
             <div>
               <input
-                className={classes.newNoteInput}
+                className="newNoteInput"
                 placeholder="Enter note title"
                 autoFocus
                 onKeyUp={e => {
@@ -44,7 +39,7 @@ class SidebarComponent extends React.Component {
                   }
                 }}
               ></input>
-              <Button className={classes.newNoteSubmitBtn}
+              <Button className="newNoteSubmitBtn"
               onClick={this.newNote}>Submit Note</Button>
             </div>
           ) : null}
@@ -94,4 +89,4 @@ class SidebarComponent extends React.Component {
   
 }
 
-export default withStyles(styles)(SidebarComponent);
+export default SidebarComponent;
